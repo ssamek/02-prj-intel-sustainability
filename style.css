@@ -1,0 +1,269 @@
+/* Milestone images in timeline cards */
+.milestone-img {
+	width: 100%;
+	max-width: 320px;
+	height: 140px;
+	object-fit: cover;
+	border-radius: 0.8rem;
+	margin-bottom: 1rem;
+	box-shadow: 0 2px 10px rgba(0,104,181,0.10);
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	background: #e6f2fa;
+	transition: box-shadow 0.3s, transform 0.3s;
+}
+.timeline-event:hover .milestone-img,
+.timeline-event:focus .milestone-img {
+	box-shadow: 0 6px 24px rgba(0,104,181,0.18);
+	transform: scale(1.04) rotate(-0.5deg);
+}
+/* Intel-branded header background and logo */
+.intel-header-bg {
+	background: linear-gradient(120deg, #0068b5 60%, #00baff 100%);
+	padding: 2.5rem 1rem 2rem 1rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+}
+
+.intel-logo {
+	width: 120px;
+	height: auto;
+	margin-bottom: 1.2rem;
+	filter: drop-shadow(0 2px 8px rgba(0,0,0,0.08));
+	background: #fff;
+	border-radius: 1.5rem;
+	padding: 0.5rem 1.2rem;
+}
+
+.headline-group {
+	text-align: center;
+	max-width: 600px;
+}
+
+.headline {
+	font-size: 2.3rem;
+	font-weight: 700;
+	color: #fff;
+	margin: 0 0 0.7rem 0;
+	letter-spacing: -1px;
+	text-shadow: 0 2px 12px rgba(0,104,181,0.18);
+}
+
+.subheading {
+	font-size: 1.25rem;
+	color: #e6f2fa;
+	opacity: 0.95;
+	margin: 0;
+	font-weight: 400;
+	text-shadow: 0 1px 6px rgba(0,104,181,0.10);
+}
+
+@media (max-width: 600px) {
+	.intel-header-bg {
+		padding: 1.5rem 0.5rem 1.2rem 0.5rem;
+	}
+	.intel-logo {
+		width: 80px;
+		padding: 0.3rem 0.7rem;
+	}
+	.headline {
+		font-size: 1.3rem;
+	}
+	.subheading {
+		font-size: 1rem;
+	}
+}
+
+body {
+	font-family: 'Segoe UI', Arial, sans-serif;
+	margin: 0;
+	background: #f4f8fb;
+	color: #222;
+}
+
+header {
+	background: #0068b5;
+	color: #fff;
+	padding: 2rem 1rem 1rem 1rem;
+	text-align: center;
+}
+
+.subtitle {
+	font-size: 1.2rem;
+	opacity: 0.85;
+	margin-top: 0.5rem;
+}
+
+main {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	min-height: 70vh;
+	padding: 2rem 0;
+}
+
+
+/* Timeline Flexbox Layout */
+.timeline {
+	display: flex;
+	flex-direction: row;
+	gap: 2rem;
+	overflow-x: auto;
+	padding: 2rem 1rem;
+	scroll-snap-type: x mandatory;
+	scroll-padding-left: 1rem;
+	-webkit-overflow-scrolling: touch;
+	background: transparent;
+	scroll-behavior: smooth;
+}
+
+.timeline-event {
+	flex: 0 0 340px;
+	display: flex;
+	align-items: stretch;
+	position: relative;
+	scroll-snap-align: center;
+	scroll-snap-stop: always;
+	transition: transform 0.3s, box-shadow 0.3s;
+	outline: none;
+}
+
+.timeline-content {
+	background: #fff;
+	border-radius: 1.2rem;
+	padding: 2rem 1.2rem 1.5rem 1.2rem;
+	box-shadow: 0 2px 16px rgba(0,104,181,0.10);
+	border: 2px solid #e6f2fa;
+	position: relative;
+	min-height: 220px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	transition: box-shadow 0.3s, background 0.3s, border 0.3s;
+}
+
+.timeline-event:focus .timeline-content,
+.timeline-event:hover .timeline-content {
+	background: #e6f2fa;
+	box-shadow: 0 4px 32px rgba(0,104,181,0.18);
+	border: 2px solid #00baff;
+}
+
+.timeline-content h2 {
+	margin: 0 0 0.7rem 0;
+	font-size: 1.25rem;
+	color: #0068b5;
+	font-weight: 600;
+	letter-spacing: -0.5px;
+}
+.timeline-content p {
+	margin: 0 0 0.7rem 0;
+	font-size: 1.05rem;
+	color: #222;
+	font-weight: 400;
+}
+
+/* Timeline Details (hidden by default, shown on hover/focus) */
+.timeline-details {
+	opacity: 0;
+	max-height: 0;
+	overflow: hidden;
+	transition: opacity 0.3s, max-height 0.3s;
+	margin-top: 0.5rem;
+	background: #f4f8fb;
+	border-radius: 0.7rem;
+	padding: 0 0.5rem;
+	color: #0068b5;
+	font-size: 0.98rem;
+}
+.timeline-event:hover .timeline-details,
+.timeline-event:focus .timeline-details {
+	opacity: 1;
+	max-height: 120px;
+	padding: 0.7rem 0.5rem;
+}
+.timeline-details ul {
+	margin: 0;
+	padding-left: 1.1rem;
+}
+.timeline-details li {
+	margin-bottom: 0.3rem;
+	color: #0068b5;
+	font-weight: 500;
+}
+
+/* Timeline Scrollbar Styling */
+.timeline {
+	scrollbar-width: thin;
+	scrollbar-color: #b3d1ea #f4f8fb;
+}
+.timeline::-webkit-scrollbar {
+	height: 10px;
+}
+.timeline::-webkit-scrollbar-thumb {
+	background: #b3d1ea;
+	border-radius: 6px;
+}
+.timeline::-webkit-scrollbar-track {
+	background: #f4f8fb;
+}
+
+@media (max-width: 900px) {
+	.timeline {
+		gap: 1.2rem;
+		padding: 1.2rem 0.5rem;
+	}
+	.timeline-event {
+		flex-basis: 90vw;
+		min-width: 260px;
+		max-width: 98vw;
+	}
+}
+
+@media (max-width: 600px) {
+	.timeline {
+		flex-direction: column;
+		gap: 1.2rem;
+		overflow-x: visible;
+		padding: 1.2rem 0.2rem;
+		scroll-snap-type: none;
+	}
+	.timeline-event {
+		flex: 1 1 100%;
+		min-width: 0;
+		max-width: 100%;
+	}
+}
+
+footer {
+	text-align: center;
+	padding: 1.5rem 0 1rem 0;
+	background: #f4f8fb;
+	color: #888;
+	font-size: 0.95rem;
+}
+
+@media (max-width: 800px) {
+	.timeline {
+		max-width: 100%;
+		padding: 1rem 0;
+	}
+	.timeline-event {
+		width: 100%;
+		left: 0 !important;
+		text-align: left !important;
+		padding: 1rem 1.5rem;
+	}
+	.timeline::before {
+		left: 20px;
+		transform: none;
+	}
+	.timeline-event::after {
+		left: 2px !important;
+		right: auto !important;
+	}
+}
